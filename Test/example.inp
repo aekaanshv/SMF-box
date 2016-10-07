@@ -1,0 +1,19 @@
+# --- SMF ACCEPTS SMF.INP TO START THE OPTIMIZATION. 
+# --- IT WILL MODIFY THE INP FILE DURING THE COURSE OF THE OPTIMIZATION SO BE SURE TO MAKE A COPY!
+# Also dont leave a newline between a setting name and its value
+
+# Phase specifies the last executed action of the SMF. Possible options are: Start, LHS, Search, Poll, Restart
+Phase
+Start
+
+# Initial grid spacing for the SMF
+Spacing
+36 36 36 36 36 36 
+
+# Upper and lower bounds for the optimization
+Upper bound
+10 10 10 10 10 10 
+Lower bound
+0 0 0 0 0 0 
+
+# Additionally, if you are restarting - you should specify a xhist.dat and a Jhist.dat 
