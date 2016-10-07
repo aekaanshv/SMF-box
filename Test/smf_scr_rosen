@@ -1,0 +1,43 @@
+#!/bin/bash
+
+ptsfile="xnew.dat"
+temppts="temp.dat"
+inpfile="c.txt"
+outfile="sse.txt"
+Jfile="Jnew.dat"
+endfile="stopfile"
+
+until [ -e $endfile ]
+#for i in 1 2 3 
+do
+./krig
+
+if [ -e $Jfile ]
+then
+  rm $Jfile
+fi
+
+cp $ptsfile $temppts
+
+while [ -s $temppts ]
+do
+
+head -n 1 $temppts > $inpfile
+./rosen
+
+tail -n +2 $temppts > 1_$temppts
+
+mv 1_$temppts $temppts
+
+if [ -e $Jfile ] 
+then
+  cat $Jfile $outfile > 1_$Jfile
+  mv 1_$Jfile $Jfile
+else
+  cp $outfile $Jfile
+fi
+
+done
+
+rm $temppts
+done
